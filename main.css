@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+  font-family: "Open Sans";
+  font-weight: 100;
+}
+ 
+.countdown-title {
+  color: #fff;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+ 
+.countdown {
+  font-family: "Open Sans";
+  color: #fff;
+  display: flex;
+  font-weight: 400;
+  text-align: center;
+  font-size: 30px;
+  height: 60vh;
+  width: max-content;
+  margin: auto;
+}
+#congrats{
+  font-size: 40px;
+  font-weight: 400;
+  color: #fff;
+}
+.countdown-inner {
+  font-size: 6em;
+}
+.captions{
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+}
+ 
+.didts {
+  display: inline-block;
+}
+ 
+.didts-text {
+  display: block;
+  font-size: 16px;
+}
+.didts-text:first-child{
+  padding-right: 50%;
+}

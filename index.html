@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" data-toggle="modal" href='#about'>О странице</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" data-toggle="modal" href='#'
+							onclick="$('nav').css('display', 'none')">Скрыть nav</a>
+					</li>
+				</ul>
+				<a class="nav-link disabled" id="clocks" href="#">Сейчас ...</a>
+			</div>
+		</nav>
+		<div class="modal" tabindex="-1" role="dialog" id="about">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">О странице</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Локальный сайт для отчета времени</p>
+						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#debug"
+							aria-expanded="false" aria-controls="collapseExample">
+							Дебаг информация
+						</button>
+						</p>
+						<div class="collapse" id="debug">
+							<div class="card card-body">
+								Конечная дата для таймера: <span id="endtime"></span><br>
+								Осталось миллисекунд: <span id="left"></span><br>
+								Полный таймер: <span id="fulltimer"></span>
+								Цвет фона: <span id="bghex"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h1 class="countdown-title">До нового <span id="future_year"></span> года осталось:</h1>
+		<div id="countdown" class="countdown">
+			<div class="countdown-inner">
+				<span class="didts" id="num1"></span><br>
+				<span class="didts-text" id="text-num1"></span>
+			</div>
+			<div class="countdown-inner"><span id="separator">&#8201 : &#8201</span></div>
+			<div class="countdown-inner">
+				<span class="didts" id="num2"></span><br>
+				<span class="didts-text" id="text-num2"></span>
+			</div>
+		</div>
+		<div id="congrats">
+
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
