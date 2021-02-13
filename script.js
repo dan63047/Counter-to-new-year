@@ -101,6 +101,7 @@ function initializeClock(endtime) {
         else if (t.total > 0) {
             num1.innerHTML = ('0' + t.seconds).slice(-2);
             num2.innerHTML = ('0' + t.seconds1_100).slice(-2);
+            dots.innerHTML = "&#8201 . &#8201"
             textnum1.innerHTML = '';
             textnum2.innerHTML = '';
             document.title = t.seconds + " сек. до НГ";
@@ -113,7 +114,7 @@ function initializeClock(endtime) {
             var congrats = document.getElementById("congrats");
             congrats.innerHTML = "C новым годом!!!\nСчасливого " + future_year + " года!";
         };
-        if (t.seconds % 2) {
+        if ((t.seconds % 2) || (t.total <= 60000)) {
             dots.style.color = "#fff";
         }
         else {
@@ -136,5 +137,6 @@ var d_for_setting = new Date(), future_year;
     }
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
+// initializeClock("Feb 12 2021 22:03:00");
 DateTime();
 setInterval(DateTime, 1000 / 60);
