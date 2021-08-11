@@ -1,6 +1,5 @@
 function DateTime() {
     var dateNow = new Date(),
-        ms = new Date(),
         year = dateNow.getFullYear(),
         jsmonth = dateNow.getMonth(),
         month = [],
@@ -46,15 +45,28 @@ function getTimeRemaining(endtime) {
 }
 
 function changeBackgroundColor() {
-    var t = Date.now() % 86400000 / 86400000;
-    colors = [[0, 160, 255], [0, 0, 60]];
-    if (t < (86400000/2)){
-        currect = [0, colors[0][0]*(1-t), (colors[0][2]-colors[1][2])*(1-t)+colors[1][2]];
-    }else{
-        currect = [0, colors[0][0]*(t), (colors[0][2]-colors[1][2])*(t)+colors[1][2]];
+    let t = new Date();
+    let local_t = t.getTime() - t.getTimezoneOffset()*60000;
+    let color_var = (local_t % 86400000 > 43200000) ? 1-(local_t % 21600000 / 21600000) : local_t % 21600000 / 21600000
+    let color_phase = local_t % 86400000 / 21600000
+    let colors = [[38,41,52], [13,117,248]];
+    switch (Math.trunc(color_phase)) {
+        case 0:
+        case 2:
+            currect = [colors[0][0]+((Math.max(colors[0][0], colors[1][0])-Math.min(colors[0][0], colors[1][0]))*color_var), colors[0][1]+((Math.max(colors[0][1], colors[1][1])-Math.min(colors[0][1], colors[1][1]))*color_var), colors[0][2]+((Math.max(colors[0][2], colors[1][2])-Math.min(colors[0][2], colors[1][2]))*color_var)];
+            break;
+        case 1:
+            currect = colors[1]
+            break;
+        case 3:
+            currect = colors[0]
     }
     document.getElementsByTagName("body")[0].style.backgroundColor = "#"+("0"+Math.round(currect[0]).toString(16)).slice(-2)+("0"+Math.round(currect[1]).toString(16)).slice(-2)+("0"+Math.round(currect[2]).toString(16)).slice(-2);
-    document.getElementById("bghex").innerHTML = document.getElementsByTagName("body")[0].style.backgroundColor
+    document.getElementById("color_r").innerHTML = currect[0].toFixed(6)
+    document.getElementById("color_g").innerHTML = currect[1].toFixed(6)
+    document.getElementById("color_b").innerHTML = currect[2].toFixed(6)
+    document.getElementById("color_phase").innerHTML = color_phase.toFixed(6)
+    document.getElementById("color_var").innerHTML = color_var.toFixed(6)
 }
 
 function initializeClock(endtime) {
@@ -114,12 +126,7 @@ function initializeClock(endtime) {
             var congrats = document.getElementById("congrats");
             congrats.innerHTML = "C новым годом!!!\nСчасливого " + future_year + " года!";
         };
-        if ((t.seconds % 2) || (t.total <= 60000)) {
-            dots.style.color = "#fff";
-        }
-        else {
-            dots.style.color = "#fff0";
-        }
+        dots.style.color = ((t.seconds % 2) || (t.total <= 60000)) ? "#fff":"#fff0";
         changeBackgroundColor();
         debug2.innerHTML = t.total.toLocaleString('ru');
         debug3.innerHTML = t.days + ':' + ('0' + t.hours).slice(-2) + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2) + '.' + ('00' + t.mseconds).slice(-3);
@@ -129,12 +136,8 @@ function initializeClock(endtime) {
     var timeinterval = setInterval(updateClock, updateTime);
 }
 
-var d_for_setting = new Date(), future_year;
-    if (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7){
-        future_year = d_for_setting.getFullYear()
-    }else{
-        future_year = d_for_setting.getFullYear() + 1
-    }
+let d_for_setting = new Date();
+let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7) ? d_for_setting.getFullYear() : d_for_setting.getFullYear() + 1
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
 // initializeClock("Feb 12 2021 22:03:00");
