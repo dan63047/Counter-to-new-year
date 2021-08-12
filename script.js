@@ -53,7 +53,7 @@ function changeBackgroundColor() {
     switch (Math.trunc(color_phase)) {
         case 0:
         case 2:
-            currect = [colors[0][0]-((Math.max(colors[0][0], colors[1][0])-Math.min(colors[0][0], colors[1][0]))*color_var), colors[0][1]+((Math.max(colors[0][1], colors[1][1])-Math.min(colors[0][1], colors[1][1]))*color_var), colors[0][2]+((Math.max(colors[0][2], colors[1][2])-Math.min(colors[0][2], colors[1][2]))*color_var)];
+            currect = [colors[0][0]-Math.abs(colors[0][0], colors[1][0])*color_var, colors[0][1]+Math.abs(colors[0][1], colors[1][1])*color_var, colors[0][2]+Math.abs(colors[0][2], colors[1][2])*color_var];
             break;
         case 1:
             currect = colors[1]
