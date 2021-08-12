@@ -46,14 +46,14 @@ function getTimeRemaining(endtime) {
 
 function changeBackgroundColor() {
     let t = new Date();
-    let local_t = t.getTime() - t.getTimezoneOffset()*60000;
+    let local_t = t.getTime() - t.getTimezoneOffset()*60000 - 180*60000;
     let color_var = (local_t % 86400000 > 43200000) ? 1-(local_t % 21600000 / 21600000) : local_t % 21600000 / 21600000
     let color_phase = local_t % 86400000 / 21600000
     let colors = [[38,41,52], [13,117,248]];
     switch (Math.trunc(color_phase)) {
         case 0:
         case 2:
-            currect = [colors[0][0]+((Math.max(colors[0][0], colors[1][0])-Math.min(colors[0][0], colors[1][0]))*color_var), colors[0][1]+((Math.max(colors[0][1], colors[1][1])-Math.min(colors[0][1], colors[1][1]))*color_var), colors[0][2]+((Math.max(colors[0][2], colors[1][2])-Math.min(colors[0][2], colors[1][2]))*color_var)];
+            currect = [colors[0][0]-((Math.max(colors[0][0], colors[1][0])-Math.min(colors[0][0], colors[1][0]))*color_var), colors[0][1]+((Math.max(colors[0][1], colors[1][1])-Math.min(colors[0][1], colors[1][1]))*color_var), colors[0][2]+((Math.max(colors[0][2], colors[1][2])-Math.min(colors[0][2], colors[1][2]))*color_var)];
             break;
         case 1:
             currect = colors[1]
