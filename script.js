@@ -49,7 +49,7 @@ function changeBackgroundColor() {
     let local_t = t.getTime() - t.getTimezoneOffset()*60000 - 180*60000;
     let color_var = (local_t % 86400000 > 43200000) ? 1-(local_t % 21600000 / 21600000) : local_t % 21600000 / 21600000
     let color_phase = local_t % 86400000 / 21600000
-    let colors = [[38,41,52], [13,117,248]];
+    let colors = [[112,38,112], [13,117,248]];
     switch (Math.trunc(color_phase)) {
         case 0:
         case 2:
