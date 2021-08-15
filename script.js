@@ -72,9 +72,9 @@ function changeBackgroundColor() {
 function initializeClock(endtime) {
     var num1 = document.getElementById('num1');
     var num2 = document.getElementById('num2');
-    var textnum1 = document.getElementById('text-num1');
-    var textnum2 = document.getElementById('text-num2');
-    var dots = document.getElementById('separator');
+    var num3 = document.getElementById('num3');
+    var dots1 = document.getElementById('separator1');
+    var dots2 = document.getElementById('separator2');
     var debug1 = document.getElementById('endtime');
     var debug2 = document.getElementById('left');
     var debug3 = document.getElementById('fulltimer');
@@ -82,52 +82,44 @@ function initializeClock(endtime) {
 
     function updateClock() {
         var t = getTimeRemaining(endtime);
-        if (t.days > 99){
-            num1.innerHTML = t.days;
+        if (t.days > 0) {
+            num1.innerHTML = (t.days > 99) ? t.days : ('0' + t.days).slice(-2);
+            dots1.innerHTML = "д. &#8201&#8201";
+            dots1.style.fontSize = "3rem";
+            dots1.style.width = dots2.style.width;
             num2.innerHTML = ('0' + t.hours).slice(-2);
-            textnum1.innerHTML = 'Дней';
-            textnum2.innerHTML = 'Часов';
-            document.title = t.days + " дн. до НГ";
-        }
-        else if (t.days > 0) {
-            num1.innerHTML = ('0' + t.days).slice(-2);
-            num2.innerHTML = ('0' + t.hours).slice(-2);
-            textnum1.innerHTML = 'Дней';
-            textnum2.innerHTML = 'Часов';
+            num3.innerHTML = ('0' + t.minutes).slice(-2);
             document.title = t.days + " дн. до НГ";
         }
         else if (t.hours > 0) {
             num1.innerHTML = ('0' + t.hours).slice(-2);
+            dots1.innerHTML = ":";
+            dots1.style.fontSize = "1em";
             num2.innerHTML = ('0' + t.minutes).slice(-2);
-            textnum1.innerHTML = 'Часов';
-            textnum2.innerHTML = 'Минут';
+            num3.innerHTML = ('0' + t.seconds).slice(-2);
             document.title = t.hours + " ч. до НГ";
         }
-        else if (t.minutes > 0) {
+        else if (t.total > 0) {
             num1.innerHTML = ('0' + t.minutes).slice(-2);
             num2.innerHTML = ('0' + t.seconds).slice(-2);
-            textnum1.innerHTML = 'Минут';
-            textnum2.innerHTML = 'Секунд';
-            document.title = t.minutes + " мин. до НГ";
-        }
-        else if (t.total > 0) {
-            num1.innerHTML = ('0' + t.seconds).slice(-2);
-            num2.innerHTML = ('0' + t.seconds1_100).slice(-2);
-            dots.innerHTML = "&#8201 . &#8201"
-            textnum1.innerHTML = '';
-            textnum2.innerHTML = '';
-            document.title = t.seconds + " сек. до НГ";
+            num3.innerHTML = ('0' + t.seconds1_100).slice(-2);
+            dots2.innerHTML = ".";
+            document.title = (t.total <= 60000) ? t.seconds + " сек. до НГ" : t.minutes + " мин. до НГ";
         }
         else {
             num1.innerHTML = "00";
             num2.innerHTML = "00";
+            num3.innerHTML = "00";
             clearInterval(timeinterval);
             document.title = "С новым годом!";
             var congrats = document.getElementById("congrats");
             congrats.innerHTML = "C новым годом!!!\nСчасливого " + future_year + " года!";
+            setTimeout(function() {
+                $('body').fireworks();
+            });
         };
-        dots.style.color = ((t.seconds % 2) || (t.total <= 60000)) ? "#fff":"#fff0";
-        changeBackgroundColor();
+        dots1.style.color = ((t.seconds % 2) || (t.total <= 3600000) || (t.days > 0)) ? "#fff":"#fff0";
+        dots2.style.color = ((t.seconds % 2) || (t.total <= 3600000)) ? "#fff":"#fff0";
         debug2.innerHTML = t.total.toLocaleString('ru');
         debug3.innerHTML = t.days + ':' + ('0' + t.hours).slice(-2) + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2) + '.' + ('00' + t.mseconds).slice(-3);
     }
@@ -140,6 +132,7 @@ let d_for_setting = new Date();
 let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7) ? d_for_setting.getFullYear() : d_for_setting.getFullYear() + 1
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
-// initializeClock("Feb 12 2021 22:03:00");
+//initializeClock("Aug 15 2021 22:17:00");
 DateTime();
-setInterval(DateTime, 1000 / 60);
+setInterval(DateTime, 1000/60);
+setInterval(changeBackgroundColor, 1000/60);

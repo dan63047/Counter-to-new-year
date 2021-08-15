@@ -47,11 +47,3 @@ body {
 .didts {
   display: inline-block;
 }
- 
-.didts-text {
-  display: block;
-  font-size: 16px;
-}
-.didts-text:first-child{
-  padding-right: 50%;
-}
