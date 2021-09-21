@@ -1,30 +1,3 @@
-function DateTime() {
-    var dateNow = new Date(),
-        year = dateNow.getFullYear(),
-        jsmonth = dateNow.getMonth(),
-        month = [],
-        day = dateNow.getDate(),
-        hour = dateNow.getHours(),
-        minutes = dateNow.getMinutes(),
-        second = dateNow.getSeconds(),
-        d = document.getElementById('clocks');
-
-    month[0] = "января";
-    month[1] = "февраля";
-    month[2] = "марта";
-    month[3] = "апреля";
-    month[4] = "мая";
-    month[5] = "июня";
-    month[6] = "июля";
-    month[7] = "августа";
-    month[8] = "сентября";
-    month[9] = "октября";
-    month[10] = "ноября";
-    month[11] = "декабря";
-
-    d.innerHTML = "Сейчас " + day + " " + month[jsmonth] + " " + year + " года, " + hour + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + second).slice(-2);
-}
-
 function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.now();
     var mseconds = t % 1000;
@@ -112,8 +85,7 @@ function initializeClock(endtime) {
             num3.innerHTML = "00";
             clearInterval(timeinterval);
             document.title = "С новым годом!";
-            var congrats = document.getElementById("congrats");
-            congrats.innerHTML = "C новым годом!!!\nСчасливого " + future_year + " года!";
+            document.getElementsByClassName("countdown-title")[0].innerHTML = "C новым годом!!!\nСчасливого " + future_year + " года!";
             setTimeout(function() {
                 $('body').fireworks();
             });
@@ -132,7 +104,5 @@ let d_for_setting = new Date();
 let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7) ? d_for_setting.getFullYear() : d_for_setting.getFullYear() + 1
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
-//initializeClock("Aug 15 2021 22:17:00");
-DateTime();
-setInterval(DateTime, 1000/60);
+//initializeClock("Sep 22 2021 19:21:00");
 setInterval(changeBackgroundColor, 1000/60);

@@ -2,13 +2,18 @@ body {
   text-align: center;
   font-family: "Open Sans";
   font-weight: 100;
+  display: grid;
+  height: 100vh;
+  align-content: center;
 }
  
 .countdown-title {
   color: #fff;
   font-weight: 100;
   font-size: 40px;
-  margin: 0;
+  position: absolute;
+  width: 100%;
+  margin: 3vh 0 0 0;
 }
  
 .countdown {
@@ -18,7 +23,6 @@ body {
   font-weight: 400;
   text-align: center;
   font-size: 30px;
-  height: 60vh;
   width: max-content;
   margin: auto;
 }
