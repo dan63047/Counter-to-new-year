@@ -35,11 +35,8 @@ function changeBackgroundColor() {
             currect = colors[0]
     }
     document.getElementsByTagName("body")[0].style.backgroundColor = "#"+("0"+Math.round(currect[0]).toString(16)).slice(-2)+("0"+Math.round(currect[1]).toString(16)).slice(-2)+("0"+Math.round(currect[2]).toString(16)).slice(-2);
-    document.getElementById("color_r").innerHTML = currect[0].toFixed(6)
-    document.getElementById("color_g").innerHTML = currect[1].toFixed(6)
-    document.getElementById("color_b").innerHTML = currect[2].toFixed(6)
-    document.getElementById("color_phase").innerHTML = color_phase.toFixed(6)
-    document.getElementById("color_var").innerHTML = color_var.toFixed(6)
+    var num_f = 3;
+    document.getElementById("color").innerHTML = "R:" + currect[0].toFixed(num_f) + "; G:" + currect[1].toFixed(num_f) + "; B:" + currect[2].toFixed(num_f) + "; P:" + Math.trunc(color_phase) + "; V:" + (color_var*100).toFixed(num_f)+"%";
 }
 
 function initializeClock(endtime) {
@@ -51,12 +48,13 @@ function initializeClock(endtime) {
     var debug1 = document.getElementById('endtime');
     var debug2 = document.getElementById('left');
     var debug3 = document.getElementById('fulltimer');
+    var time_to = new Date(endtime)
     var updateTime = 1000 / 60;
 
     function updateClock() {
         var t = getTimeRemaining(endtime);
         if (t.days > 0) {
-            num1.innerHTML = (t.days > 99) ? t.days : ('0' + t.days).slice(-2);
+            num1.innerHTML = t.days;
             dots1.innerHTML = "д. &#8201&#8201";
             dots1.style.fontSize = "3rem";
             dots1.style.width = dots2.style.width;
@@ -95,7 +93,7 @@ function initializeClock(endtime) {
         debug2.innerHTML = t.total.toLocaleString('ru');
         debug3.innerHTML = t.days + ':' + ('0' + t.hours).slice(-2) + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2) + '.' + ('00' + t.mseconds).slice(-3);
     }
-    debug1.innerHTML = endtime;
+    debug1.innerHTML = time_to.toLocaleString();
     updateClock();
     var timeinterval = setInterval(updateClock, updateTime);
 }
@@ -104,5 +102,5 @@ let d_for_setting = new Date();
 let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7) ? d_for_setting.getFullYear() : d_for_setting.getFullYear() + 1
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
-//initializeClock("Sep 22 2021 19:21:00");
+//initializeClock("Sep 23 2021 13:24:00");
 setInterval(changeBackgroundColor, 1000/60);

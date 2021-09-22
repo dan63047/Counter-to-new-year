@@ -14,66 +14,56 @@
 
 <body>
 	<h1 class="countdown-title">До нового <span id="future_year"></span> года осталось:</h1>
-	<div class=".container-fluid">
-		<div class="modal" tabindex="-1" role="dialog" id="about">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">О странице</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Данный сайт не сохраняет никакие cookie и использует только время вашего устройства.</p>
-						<p>Автор сайта: <a href="https://t.me/dan63047">dan63047</a></p>
-						<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#debug"
-							aria-expanded="false" aria-controls="collapseExample">
-							Дебаг информация
-						</button>
-						</p>
-						<div class="collapse" id="debug">
-							<div class="card card-body">
-								<div class="incard_l">
-									Отсчёт до:<br>
-									Осталось миллисекунд:<br>
-									Полный таймер:<br>
-									R:<br>
-									G:<br>
-									B:<br>
-									color_phase:<br>
-									color_var:<br>
-								</div>
-								<div class="incard_r">
-									<a id="endtime"></a><br>
-									<a id="left"></a><br>
-									<a id="fulltimer"></a><br>
-									<a id="color_r"></a><br>
-									<a id="color_g"></a><br>
-									<a id="color_b"></a><br>
-									<a id="color_phase"></a><br>
-									<a id="color_var"></a>
-								</div>
+	<div class="modal" tabindex="-1" role="dialog" id="about">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">О странице</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Данный сайт не сохраняет никакие cookie и использует только время вашего устройства.</p>
+					<p>Автор сайта: <a href="https://t.me/dan63047">dan63047</a></p>
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#debug"
+						aria-expanded="false" aria-controls="collapseExample">
+						Дебаг информация
+					</button>
+					</p>
+					<div class="collapse" id="debug">
+						<div class="card card-body">
+							<div class="incard_l">
+								Отсчёт до:<br>
+								Осталось миллисекунд:<br>
+								Полный таймер:<br>
+								Фон:
+							</div>
+							<div class="incard_r">
+								<a id="endtime"></a><br>
+								<a id="left"></a><br>
+								<a id="fulltimer"></a><br>
+								<a id="color"></a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div id="countdown" class="countdown">
 		
-		<div id="countdown" class="countdown">
-			
-			<div class="countdown-inner">
-				<span class="didts" id="num1"></span>
-			</div>
-			<div class="countdown-inner"><span id="separator1">:</span></div>
-			<div class="countdown-inner">
-				<span class="didts" id="num2"></span>
-			</div>
-			<div class="countdown-inner"><span id="separator2">:</span></div>
-			<div class="countdown-inner">
-				<span class="didts" id="num3"></span>
-			</div>
+		<div class="countdown-inner">
+			<span class="didts" id="num1"></span>
+		</div>
+		<div class="countdown-inner"><span id="separator1">:</span></div>
+		<div class="countdown-inner">
+			<span class="didts" id="num2"></span>
+		</div>
+		<div class="countdown-inner"><span id="separator2">:</span></div>
+		<div class="countdown-inner">
+			<span class="didts" id="num3"></span>
 		</div>
 	</div>
 	<a class="nav-link" data-toggle="modal" href='#about' style="color: #ffffff; text-decoration: underline; width: 100%; position: absolute; bottom: 0;">О странице</a>
