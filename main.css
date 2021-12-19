@@ -4,6 +4,7 @@ body {
   font-weight: 100;
   display: grid;
   height: 100vh;
+  background: #000;
   align-content: center;
 }
  
