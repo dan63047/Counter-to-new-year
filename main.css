@@ -17,7 +17,7 @@ body {
 }
  
 .countdown {
-  font-family: "Open Sans";
+  font-family: sans-serif monospace;
   color: #fff;
   display: flex;
   font-weight: 400;
