@@ -16,7 +16,7 @@ function getTimeRemaining(endtime) {
         'mseconds': mseconds
     };
 }
-
+let phases = ["Переходная (с ночи на день)", "Дневная", "Переходная (со дня на ночь)", "Ночная"]
 function changeBackgroundColor() {
     let t = new Date();
     let local_t = t.getTime() - t.getTimezoneOffset()*60000 - 180*60000;
@@ -35,8 +35,9 @@ function changeBackgroundColor() {
             currect = colors[0]
     }
     document.getElementsByTagName("body")[0].style.backgroundColor = "#"+("0"+Math.round(currect[0]).toString(16)).slice(-2)+("0"+Math.round(currect[1]).toString(16)).slice(-2)+("0"+Math.round(currect[2]).toString(16)).slice(-2);
-    var num_f = 3;
-    document.getElementById("color").innerHTML = "R:" + currect[0].toFixed(num_f) + "; G:" + currect[1].toFixed(num_f) + "; B:" + currect[2].toFixed(num_f) + "; P:" + Math.trunc(color_phase) + "; V:" + (color_var*100).toFixed(num_f)+"%";
+    var num_f = 2;
+    document.getElementById("color").innerHTML = "R:" + currect[0].toFixed(num_f) + "; G:" + currect[1].toFixed(num_f) + "; B:" + currect[2].toFixed(num_f);
+    document.getElementById("phase").innerHTML =  phases[Math.trunc(color_phase)]  + ", " + ((color_phase % 1)*100).toFixed(num_f)+"%"
 }
 
 function initializeClock(endtime) {
