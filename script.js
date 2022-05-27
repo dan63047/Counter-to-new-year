@@ -1,3 +1,4 @@
+const relative_to_local = new Intl.RelativeTimeFormat("ru", {numeric: 'auto', style: 'long'});
 function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.now();
     var mseconds = t % 1000;
@@ -61,7 +62,7 @@ function initializeClock(endtime) {
             dots1.style.width = dots2.style.width;
             num2.innerHTML = ('0' + t.hours).slice(-2);
             num3.innerHTML = ('0' + t.minutes).slice(-2);
-            document.title = t.days + " дн. до НГ";
+            document.title = "НГ " + relative_to_local.format(t.days, "day");
         }
         else if (t.hours > 0) {
             num1.innerHTML = ('0' + t.hours).slice(-2);
@@ -69,14 +70,14 @@ function initializeClock(endtime) {
             dots1.style.fontSize = "1em";
             num2.innerHTML = ('0' + t.minutes).slice(-2);
             num3.innerHTML = ('0' + t.seconds).slice(-2);
-            document.title = t.hours + " ч. до НГ";
+            document.title = "НГ " + relative_to_local.format(t.hours, "hour");
         }
         else if (t.total > 0) {
             num1.innerHTML = ('0' + t.minutes).slice(-2);
             num2.innerHTML = ('0' + t.seconds).slice(-2);
             num3.innerHTML = ('0' + t.seconds1_100).slice(-2);
             dots2.innerHTML = ".";
-            document.title = (t.total <= 60000) ? t.seconds + " сек. до НГ" : t.minutes + " мин. до НГ";
+            document.title = "НГ " + ((t.total <= 60000) ? relative_to_local.format(t.seconds, "second") : relative_to_local.format(t.minutes, "minute"));
         }
         else {
             num1.innerHTML = "00";
@@ -103,5 +104,5 @@ let d_for_setting = new Date();
 let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7) ? d_for_setting.getFullYear() : d_for_setting.getFullYear() + 1
 document.getElementById("future_year").innerHTML = future_year;
 initializeClock("Jan 01 " + future_year + " 00:00:00");
-//initializeClock("Sep 23 2021 13:24:00");
+//initializeClock("Apr 27 2022 23:24:00");
 setInterval(changeBackgroundColor, 1000/60);
