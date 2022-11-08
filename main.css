@@ -1,16 +1,39 @@
+@font-face {
+  font-family: 'Eurostile Round';
+  src: local('Eurostile Round Medium'), local('EurostileRound-Medium'), url('https://dan63.by/static/EurostileRound-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Eurostile Round Extended';
+  src: local('Eurostile Round Extended Regular'), local('EurostileRoundExtended-Regular'), url('https://dan63.by/static/EurostileRoundExtended-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Eurostile Round Extended';
+  src: local('Eurostile Round Extended Black'), local('EurostileRoundExtended-Black'), url('https://dan63.by/static/EurostileRoundExtended-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 body {
   text-align: center;
-  font-family: "Open Sans";
-  font-weight: 100;
+  font-family: "Eurostile Round";
+  font-weight: 500;
+  font-style: normal;
   display: grid;
   height: 100vh;
   background: #000;
   align-content: center;
+  text-shadow: 0px 0px 4px #fff9, 0px 0px 10px #0004, 0px 0px 20px #aaa4, 0px 0px 100px #fff4;
 }
  
-.countdown-title {
+#countdown-title{
   color: #fff;
-  font-weight: 100;
+  font-family: 'Eurostile Round Extended';
+  font-weight: normal;
+  font-style: normal;
   font-size: 40px;
   position: absolute;
   width: 100%;
@@ -18,11 +41,13 @@ body {
 }
  
 .countdown {
-  font-family: sans-serif monospace;
   color: #fff;
   display: flex;
-  font-weight: 400;
-  text-align: center;
+  flex-wrap: wrap;
+  font-family: 'Eurostile Round Extended';
+  font-weight: 900;
+  font-style: normal;
+  align-items: baseline;
   font-size: 30px;
   width: max-content;
   margin: auto;
@@ -33,7 +58,7 @@ body {
   color: #fff;
 }
 .countdown-inner {
-  font-size: 20vw;
+  font-size: 12vw;
 }
 .captions{
   display: flex;
@@ -54,4 +79,14 @@ body {
 }
 #separator1, #separator2{
   transition: 250ms ease-in-out;
+}
+footer{
+  color: #ffffff;
+  text-decoration: underline;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
 }

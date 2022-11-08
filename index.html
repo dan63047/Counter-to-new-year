@@ -8,12 +8,11 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<meta name="viewport" content="width=device-width">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-	<h1 class="countdown-title">До нового <span id="future_year"></span> года осталось:</h1>
+	<h1 id="countdown-title"></h1>
 	<div class="modal" tabindex="-1" role="dialog" id="about">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -24,23 +23,39 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>Данный сайт не сохраняет никакие cookie и использует только время вашего устройства.</p>
-					<p>Автор сайта: <a href="https://t.me/dan63047">dan63047</a></p>
+					<div id="about-modal-ru">
+						<p>Данный сайт не сохраняет никакие cookie и использует только время вашего устройства.</p>
+						<p>Автор сайта: <a href="https://t.me/dan63047">dan63047</a></p>
+					</div>
+					<div id="about-modal-en" style="display: none;">
+						<p>This site does not store any cookies and only uses your device's time.</p>
+						<p>Author: <a href="https://t.me/dan63047">dan63047</a></p>
+					</div>
 					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#debug"
 						aria-expanded="false" aria-controls="collapseExample">
-						Дебаг информация
+						Debug
 					</button>
 					</p>
 					<div class="collapse" id="debug">
 						<div class="card card-body">
-							<div class="incard_l">
+							<div class="incard_l" id="incard-ru">
+								Текущее время:<br>
 								Отсчёт до:<br>
 								Осталось миллисекунд:<br>
 								Полный таймер:<br>
 								Фон:<br>
 								Фаза фона:
 							</div>
+							<div class="incard_l" id="incard-en" style="display: none;">
+								Current time:<br>
+								Counting to:<br>
+								Milliseconds left:<br>
+								Full timer:<br>
+								Background:<br>
+								Bg phase:
+							</div>
 							<div class="incard_r">
+								<a id="curtime"></a><br>
 								<a id="endtime"></a><br>
 								<a id="left"></a><br>
 								<a id="fulltimer"></a><br>
@@ -55,7 +70,7 @@
 	</div>
 	
 	<div id="countdown" class="countdown">
-		<noscript>Ваш браузер запрещает исполнение скриптов. Включите Javascript, чтобы увидеть обратный отсчёт</noscript>
+		<noscript>Turn on Javascript<br>Включите Javascript</noscript>
 		<div class="countdown-inner">
 			<span class="didts" id="num1"></span>
 		</div>
@@ -68,7 +83,32 @@
 			<span class="didts" id="num3"></span>
 		</div>
 	</div>
-	<a class="nav-link" data-toggle="modal" href='#about' style="color: #ffffff; text-decoration: underline; width: 100%; position: absolute; bottom: 0;">О странице</a>
+	<footer>
+		<a class="nav-link" id="about-ru" data-toggle="modal" href='#about' style="color: inherit;">О странице</a>
+		<a class="nav-link" id="about-en" data-toggle="modal" href='#about' style="color: inherit; display: none;">About site</a>
+		<div class="dropdown mr-3">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="langDropdownMenu" data-toggle="dropdown" aria-expanded="false" style="background: transparent;">
+			  Language
+			</button>
+			<div class="dropdown-menu" aria-labelledby="langDropdownMenu">
+			  <a class="dropdown-item" href="#" onclick="languageSwitcher('ru')">Русский</a>
+			  <a class="dropdown-item" href="#" onclick="languageSwitcher('en')">English</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="eventDropdownMenu" data-toggle="dropdown" aria-expanded="false" style="background: transparent;">
+			  <span id="event-title-en" style="color: inherit; display: none;">Event</span><span id="event-title-ru" style="color: inherit;">Событие</span>
+			</button>
+			<div class="dropdown-menu" aria-labelledby="eventDropdownMenu">
+			  <a class="dropdown-item event-names-ru" href="#" onclick="eventSwitcher('ny')">Новый год</a>
+			  <a class="dropdown-item event-names-ru" href="#" onclick="eventSwitcher('ch')">Рождество христово</a>
+			  <a class="dropdown-item event-names-en" href="#" style="display: none;" onclick="eventSwitcher('ny')">New Year</a>
+			  <a class="dropdown-item event-names-en" href="#" style="display: none;" onclick="eventSwitcher('ch')">Christmas</a>
+			</div>
+		</div>
+		<a class="nav-link" id="footer-ru" onclick="hide_footer()">Спрятать футер</a>
+		<a class="nav-link" id="footer-en" onclick="hide_footer()" style="display: none;">Hide footer</a>
+	</footer>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
