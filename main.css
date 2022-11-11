@@ -26,7 +26,6 @@ body {
   height: 100vh;
   background: #000;
   align-content: center;
-  text-shadow: 0px 0px 4px #fff9, 0px 0px 10px #0004, 0px 0px 20px #aaa4, 0px 0px 100px #fff4;
 }
  
 #countdown-title{
@@ -51,6 +50,7 @@ body {
   font-size: 30px;
   width: max-content;
   margin: auto;
+  text-shadow: 0px 0px 4px #fff9, 0px 0px 10px #0004, 0px 0px 20px #aaa4, 0px 0px 100px #fff4;
 }
 #congrats{
   font-size: 40px;
