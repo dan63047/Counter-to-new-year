@@ -8,7 +8,7 @@ let future_year = (d_for_setting.getMonth() == 0 && d_for_setting.getDate() < 7)
 let event_code = "ny"
 let site_h1 = document.getElementById("countdown-title")
 let titles = {
-    "ny-ru": "До нового " + future_year + " осталось:",
+    "ny-ru": "До нового " + future_year + " года осталось:",
     "ny-en": "Until New Year " + future_year + " left:",
     "ch-ru": "До рождества " + (future_year-1) + " осталось:",
     "ch-en": "Until Christmas " + (future_year-1) + " left:"
