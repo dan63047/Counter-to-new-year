@@ -37,6 +37,7 @@ body {
   position: absolute;
   width: 100%;
   margin: 3vh 0 0 0;
+  text-shadow: 3px 3px 1px #000;
 }
  
 .countdown {
@@ -50,12 +51,13 @@ body {
   font-size: 30px;
   width: max-content;
   margin: auto;
-  text-shadow: 0px 0px 4px #fff9, 0px 0px 10px #0004, 0px 0px 20px #aaa4, 0px 0px 100px #fff4;
+  text-shadow: 5px 5px 1px #000;
 }
 #congrats{
   font-size: 40px;
   font-weight: 400;
   color: #fff;
+  text-shadow: 5px 5px 1px #000;
 }
 .countdown-inner {
   font-size: 12vw;
@@ -89,4 +91,7 @@ footer{
   display: flex;
   justify-content: center;
   z-index: 2;
+}
+footer > a{
+    text-shadow: 3px 3px 1px #000;
 }

@@ -186,8 +186,8 @@ function initializeClock(endtime) {
                 $('body').fireworks();
             });
         };
-        dots1.style.color = ((t.seconds % 2) || (t.total <= 3600000) || (t.days > 0)) ? "#fff":"#fff0";
-        dots2.style.color = ((t.seconds % 2) || (t.total <= 3600000)) ? "#fff":"#fff0";
+        dots1.style.opacity = ((t.seconds % 2) || (t.total <= 3600000) || (t.days > 0)) ? 1:0;
+        dots2.style.opacity = ((t.seconds % 2) || (t.total <= 3600000)) ? 1:0;
         debug2.innerHTML = t.total.toLocaleString(language_site);
         debug3.innerHTML = t.days + ':' + ('0' + t.hours).slice(-2) + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2) + '.' + ('00' + t.mseconds).slice(-3);
         debug4.innerHTML = new Date().toLocaleString(language_site);
